@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp /Users/michellelind/Desktop/rectangle.png /Users/michellelind/Desktop/portfolio/rectangle.png)",
+      "Bash(cp \"/Users/michellelind/Downloads/Western_Digital_logo_\\(2022\\).svg.png\" /Users/michellelind/Desktop/portfolio/wd_logo.png)",
+      "Bash(cp /Users/michellelind/Desktop/simaagustus.png /Users/michellelind/Desktop/portfolio/sima_logo.png)",
+      "Bash(cp /Users/michellelind/Downloads/atlasproai.jpeg /Users/michellelind/Desktop/portfolio/atlaspro_logo.jpeg)",
+      "Bash(cp /Users/michellelind/Downloads/cornell_logo.png /Users/michellelind/Desktop/portfolio/cornell_logo.png)",
+      "Bash(cp /Users/michellelind/Downloads/western_digital.jpeg /Users/michellelind/Desktop/portfolio/wd_logo.jpeg)",
+      "Bash(cp /Users/michellelind/Desktop/atlaspro_artifact.png /Users/michellelind/Desktop/portfolio/atlaspro_artifact.png)",
+      "Read(//Users/michellelind/Desktop/**)",
+      "Bash(cp /Users/michellelind/Desktop/wd_product.png /Users/michellelind/Desktop/portfolio/wd_product.png)",
+      "Bash(cp /Users/michellelind/Desktop/sima_product.JPG /Users/michellelind/Desktop/portfolio/sima_product.jpg)",
+      "Bash(cp /Users/michellelind/Desktop/cornell_product.png /Users/michellelind/Desktop/portfolio/cornell_product.png)",
+      "Bash(cp /Users/michellelind/Downloads/servicenow.jpeg /Users/michellelind/Desktop/portfolio/servicenow_logo.jpeg)",
+      "Read(//Users/michellelind/**)",
+      "Bash(git *)"
+    ],
+    "additionalDirectories": [
+      "/Users/michellelind/Downloads"
+    ]
+  }
+}

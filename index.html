@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michelle Karnadjaja — Product & Strategy</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Instrument+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --bg-card: #ffffff;
+      --bg-subtle: #f3f0eb;
+      --text-primary: #1a1714;
+      --text-secondary: #4a4540;
+      --text-muted: #8a8078;
+      --accent: #2a7f6f;
+      --accent-light: #e8f4f1;
+      --accent-hover: #1f6558;
+      --terracotta: #c4622d;
+      --terracotta-light: #fdf0e8;
+      --gold: #a07840;
+      --border: #e5e0d8;
+      --border-strong: #c8c0b4;
+      --shadow-sm: 0 1px 3px rgba(26,23,20,0.08);
+      --shadow-md: 0 4px 16px rgba(26,23,20,0.10);
+      --shadow-lg: 0 12px 40px rgba(26,23,20,0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250,248,245,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.805rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding: 10rem 0 7rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 5rem;
+    }
+
+    /* Geometric background accent */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -80px;
+      width: 520px; height: 520px;
+      border-radius: 50%;
+      border: 80px solid var(--accent-light);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 60px; right: 200px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: var(--terracotta-light);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.825rem;
+      font-weight: 400;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .hero-headline {
+      font-family: 'Satoshi', sans-serif;
+      font-size: clamp(1.85rem, calc(5.8vw - 8px), 4.5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      max-width: none;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.4s;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 520px;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.6s;
+    }
+
+    /* Metrics strip */
+    .hero-metrics {
+      display: flex;
+      gap: 0;
+      margin-top: 4.5rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      max-width: 760px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.8s;
+    }
+    .hero-metric {
+      flex: 1;
+      padding: 1.5rem 2rem;
+      border-right: 1px solid var(--border);
+    }
+    .hero-metric:last-child { border-right: none; }
+    .hero-metric-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+    }
+    .hero-metric-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.725rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    /* ── SECTION LAYOUT ── */
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 5rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.775rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 80px;
+    }
+
+    /* ── CASE STUDY CARDS ── */
+    .cards-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5px;
+      background: var(--border);
+    }
+    .card {
+      background: var(--bg-card);
+      padding: 0;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      transition: box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover { box-shadow: var(--shadow-md); z-index: 1; }
+
+    .card-left {
+      padding: 3.5rem 4rem 3.5rem 3.5rem;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-right {
+      padding: 3.5rem 3.5rem 3.5rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.725rem;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+    }
+    .card-company {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.745rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .card-title {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .card-hook {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-top: 1.2rem;
+    }
+
+    /* Image placeholder in card */
+    .card-image-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--bg-subtle);
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      color: var(--text-muted);
+      border: 1px dashed var(--border-strong);
+      margin-bottom: 2rem;
+    }
+    .card-image-placeholder svg {
+      opacity: 0.4;
+    }
+    .card-image-placeholder span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.725rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+    .card-right-artifact {
+      padding: 0;
+      overflow: hidden;
+    }
+    .card-product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 0;
+    }
+    .card-artifact-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 0;
+      background: var(--bg-subtle);
+    }
+
+    .card-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2.5rem;
+    }
+    .card-metric-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.725rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 2px;
+      padding: 0.3rem 0.75rem;
+      letter-spacing: 0.04em;
+    }
+    .card-cta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: gap 0.2s ease;
+    }
+    .card:hover .card-cta { gap: 1rem; }
+    .card-cta::after { content: '→'; }
+
+    .card-company-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .card-logo {
+      height: 39.0625px;
+      width: auto;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    .logo-strip {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    .strip-logo {
+      height: 46.875px;
+      width: auto;
+      filter: grayscale(100%);
+      opacity: 0.5;
+    }
+
+    /* Spotlight card — full width horizontal */
+    .card-spotlight {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .card-spotlight .card-left {
+      background: var(--accent-light);
+    }
+    .spotlight-badge {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.705rem;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.25rem 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+      opacity: 0.7;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+    .about-photo-wrap {
+      position: sticky;
+      top: 8rem;
+    }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 3px;
+      display: block;
+      filter: grayscale(15%);
+    }
+    .about-photo-caption {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
+    .about-text-wrap {}
+    .about-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .about-role {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 2;
+      margin-bottom: 2.5rem;
+    }
+    .about-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 2.5rem;
+    }
+    .about-body {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+    .about-closing {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.5;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--accent);
+      margin-top: 2.5rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .contact-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    .contact-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .contact-btns { display: flex; gap: 1rem; }
+    .btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 1.75rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-outline {
+      color: var(--text-secondary);
+      border: 1px solid var(--border-strong);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-filled {
+      background: var(--accent);
+      color: white;
+      border: 1px solid var(--accent);
+    }
+    .btn-filled:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.725rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── CASE STUDY PAGES ── */
+    .case-page { display: none; min-height: 100vh; }
+    .case-page.active { display: block; }
+    .homepage.hidden { display: none; }
+
+    .case-hero-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 9rem 5rem 5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .case-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 3rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .case-back::before { content: '←'; }
+    .case-back:hover { color: var(--accent); }
+
+    .case-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 5rem;
+      align-items: end;
+    }
+    .case-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .case-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+    .case-meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+    .case-meta-item {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.725rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .case-meta-item span { color: var(--text-secondary); }
+
+    /* Hero image area on case page */
+    .case-hero-image {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--bg-subtle);
+      border: 1px dashed var(--border-strong);
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--text-muted);
+    }
+    .case-hero-image span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    /* Case body */
+    .case-body {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5.5rem 5rem 100vh;
+    }
+    .case-body > p,
+    .case-body > .case-section-title,
+    .case-body > .case-outcomes,
+    .case-body > .case-closing {
+      max-width: 760px;
+    }
+    .case-section-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      margin-top: 4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .case-section-title:first-child { margin-top: 0; }
+    .case-section-title::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--accent);
+    }
+    .case-body p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .case-body p strong { color: var(--text-primary); font-weight: 600; }
+
+    .case-outcomes {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 2.5rem;
+      margin: 3.5rem 0;
+      border-radius: 0 3px 3px 0;
+    }
+    .case-outcomes-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.725rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .case-outcome-item {
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+    .case-outcome-item::before {
+      content: '—';
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      flex-shrink: 0;
+    }
+    .case-outcome-item strong { color: var(--text-primary); }
+
+    .case-closing {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.55;
+      border-left: 2px solid var(--terracotta);
+      padding-left: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 1.25rem 2rem; }
+      .hero { padding: 8rem 0 5rem; }
+      .hero-inner { padding: 0 2rem; }
+      .section-wrap { padding: 4rem 2rem; }
+      .card { grid-template-columns: 1fr; }
+      .card-left { border-right: none; border-bottom: 1px solid var(--border); }
+      .card-spotlight { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-photo-wrap { position: static; max-width: 280px; }
+      .contact-wrap { flex-direction: column; gap: 2rem; padding: 3rem 2rem; text-align: center; }
+      .hero-metrics { flex-direction: column; }
+      .hero-metric { border-right: none; border-bottom: 1px solid var(--border); }
+      .case-hero-grid { grid-template-columns: 1fr; }
+      .case-hero-image { aspect-ratio: 16/9; }
+      .case-hero-wrap { padding: 7rem 2rem 4rem; }
+      .case-body { padding: 3rem 2rem 100vh; }
+      footer { padding: 2rem; flex-direction: column; gap: 1rem; }
+    }
+
+    /* ── CASE PROGRESS NAV ── */
+    .case-progress-nav {
+      position: fixed;
+      right: calc(50% - 600px + 5rem);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 110px;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .case-progress-nav.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .cpn-item {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      padding: 2px 0;
+    }
+    .cpn-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .cpn-item.active .cpn-dot {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .cpn-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6875rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      text-align: right;
+      transition: color 0.2s;
+    }
+    .cpn-item.active .cpn-label {
+      color: var(--text-secondary);
+    }
+    .cpn-connector {
+      width: 1.5px;
+      height: 18px;
+      background: var(--border);
+      margin-right: 2.75px;
+      transition: background 0.25s;
+    }
+    .cpn-connector.active {
+      background: var(--accent);
+    }
+    @media (max-width: 1200px) { .case-progress-nav { display: none; } }
+  </style>
+</head>
+<body>
+
+<!-- CASE PROGRESS NAVIGATOR -->
+<div class="case-progress-nav" id="case-progress-nav"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" onclick="showHome(); return false;">Michelle Karnadjaja</a>
+  <ul class="nav-links">
+    <li><a href="#work" onclick="showHome()">Work</a></li>
+    <li><a href="#about" onclick="showHome()">About</a></li>
+    <li><a href="#contact" onclick="showHome()">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════════ HOMEPAGE ═══ -->
+<div class="homepage" id="homepage">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-label">Product &amp; Strategy — Michelle Karnadjaja</p>
+      <h1 class="hero-headline">
+        Most people walk into a system<br>
+        and learn how it works.<br>
+        <em>I walk in and ask why.</em>
+      </h1>
+      <p class="hero-sub">I ask why more than most people are comfortable with. That's where the interesting problems live.</p>
+      <div class="hero-metrics">
+        <div class="hero-metric">
+          <span class="hero-metric-value">$450K</span>
+          <span class="hero-metric-label">Annual savings</span>
+        </div>
+        <div class="hero-metric">
+          <span class="hero-metric-value">80%</span>
+          <span class="hero-metric-label">Engagement lift</span>
+        </div>
+        <div class="hero-metric">
+          <span class="hero-metric-value">27,915</span>
+          <span class="hero-metric-label">Signals synthesized</span>
+        </div>
+        <div class="hero-metric">
+          <span class="hero-metric-value">3</span>
+          <span class="hero-metric-label">Industries. One instinct.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE STUDIES -->
+  <div class="section-wrap" id="work">
+    <div class="section-header">
+      <span class="section-label">Selected Work</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-stack">
+
+      <!-- Card 1: WD -->
+      <a class="card reveal" onclick="showCase('wd'); return false;" href="#">
+        <div class="card-left" style="padding-top:1.75rem;padding-bottom:1.75rem;">
+          <div>
+            <div class="card-num" style="margin-bottom:0.75rem;">01</div>
+            <div class="card-company card-company-wrap"><img src="wd_logo.jpeg" class="card-logo" alt="Western Digital"><span>Western Digital · Milpitas, CA<br>2022–2024</span></div>
+            <h2 class="card-title">From Personal Frustration to Team Infrastructure</h2>
+            <p class="card-hook">65 engineers had built their entire working rhythm around a broken workflow. Nobody had named it as a problem yet. I did.</p>
+          </div>
+          <div>
+            <div class="card-metrics" style="margin-top:1.25rem;">
+              <span class="card-metric-tag">$450K saved</span>
+              <span class="card-metric-tag">30% cycle reduction</span>
+              <span class="card-metric-tag">Still running after I left</span>
+            </div>
+            <span class="card-cta" style="margin-top:1rem;">Read the full story</span>
+          </div>
+        </div>
+        <div class="card-right card-right-artifact">
+          <img src="wd_product.png" class="card-product-image" alt="Western Digital project">
+        </div>
+      </a>
+
+      <!-- Card 2: SIMA -->
+      <a class="card reveal" onclick="showCase('sima'); return false;" href="#">
+        <div class="card-left">
+          <div>
+            <div class="card-num">02</div>
+            <div class="card-company card-company-wrap"><img src="sima_logo.png" class="card-logo" alt="SIMA Agustus"><span>SIMA Agustus · Jakarta, Indonesia<br>2024–2025</span></div>
+            <h2 class="card-title">The Problem Wasn't the Competition</h2>
+            <p class="card-hook">Sales were declining. Everyone assumed it was pricing. I mapped the customer journey and found the front door was leaking interested customers before price ever became a factor.</p>
+          </div>
+          <div>
+            <div class="card-metrics">
+              <span class="card-metric-tag">80% inbound lift</span>
+              <span class="card-metric-tag">100% leads routed</span>
+              <span class="card-metric-tag">Void closed</span>
+            </div>
+            <span class="card-cta">Read the full story</span>
+          </div>
+        </div>
+        <div class="card-right card-right-artifact">
+          <img src="sima_product.jpg" class="card-product-image" alt="SIMA Agustus project">
+        </div>
+      </a>
+
+      <!-- Card 3: AtlasPro -->
+      <a class="card reveal" onclick="showCase('atlaspro'); return false;" href="#">
+        <div class="card-left">
+          <div>
+            <div class="card-num">03</div>
+            <div class="card-company card-company-wrap"><img src="atlaspro_logo.jpeg" class="card-logo" alt="AtlasPro AI"><span>AtlasPro AI · San Francisco, CA<br>2026–Present</span></div>
+            <h2 class="card-title">Finding What's Worth Building</h2>
+            <p class="card-hook">The brief was as open as it gets, propose what to build next, it needs product market fit. No scope, no playbook. I designed the entire research methodology from scratch.</p>
+          </div>
+          <div>
+            <div class="card-metrics">
+              <span class="card-metric-tag">27,915 signals</span>
+              <span class="card-metric-tag">80+ clusters mapped</span>
+              <span class="card-metric-tag">Features in progress</span>
+            </div>
+            <span class="card-cta">Read the full story</span>
+          </div>
+        </div>
+        <div class="card-right card-right-artifact">
+          <img src="atlaspro_artifact.png" class="card-artifact-image" alt="AtlasPro AI impact vs complexity map">
+        </div>
+      </a>
+
+      <!-- Spotlight: ServiceNow -->
+      <a class="card card-spotlight reveal" onclick="showCase('servicenow'); return false;" href="#">
+        <div class="card-left">
+          <div>
+            <span class="spotlight-badge">Research Spotlight</span>
+            <div class="card-company card-company-wrap"><img src="servicenow.jpeg" class="card-logo" alt="ServiceNow"><span>ServiceNow · Enterprise SaaS<br>2025</span></div>
+            <h2 class="card-title">The Problem Wasn't the Product</h2>
+            <p class="card-hook">Slower than expected adoption. The market assumed a product problem. Public data across 7,252 records showed a complete absence from the conversations that mattered.</p>
+          </div>
+          <div>
+            <span class="card-cta">See the research</span>
+          </div>
+        </div>
+        <div class="card-right card-right-artifact">
+          <img src="cornell_product.png" class="card-product-image" style="object-fit:contain;background:var(--bg-subtle);" alt="ServiceNow research data visualization">
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section-wrap" id="about">
+    <div class="section-header">
+      <span class="section-label">About</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo-wrap reveal">
+        <img class="about-photo" src="rectangle.png" alt="Michelle Karnadjaja">
+        <p class="about-photo-caption">Michelle Karnadjaja · Cornell MBA 2025–2027</p>
+      </div>
+      <div class="about-text-wrap reveal">
+        <h2 class="about-name">Michelle<br>Karnadjaja</h2>
+        <div class="about-role">
+          MBA Candidate · Cornell SC Johnson<br>
+          STEM · 2025–2027<br>
+          Product &amp; Strategy
+        </div>
+        <div class="logo-strip">
+          <img src="cornell_logo.png" class="strip-logo" alt="Cornell SC Johnson">
+          <img src="servicenow.jpeg" class="strip-logo" alt="ServiceNow">
+          <img src="wd_logo.jpeg" class="strip-logo" alt="Western Digital">
+          <img src="sima_logo.png" class="strip-logo" alt="SIMA Agustus">
+          <img src="atlaspro_logo.jpeg" class="strip-logo" alt="AtlasPro AI">
+        </div>
+        <div class="about-divider"></div>
+        <p class="about-body">I'm Michelle Karnadjaja, an engineer turned product and strategy thinker, currently doing my MBA at Cornell SC Johnson.</p>
+        <p class="about-body">I've worked in firmware validation at Western Digital, built operations from scratch at a 65-year-old AV company in Jakarta, and defined product direction for an early-stage AI startup in San Francisco. Different industries, different scales, the same instinct running through all of it.</p>
+        <p class="about-body">I walk into every system asking why it works that way. Not to challenge it — just because I actually want to know. That question has a way of leading somewhere interesting.</p>
+        <div class="about-closing">
+          I come in from the outside.<br>
+          That's not a gap in my resume —<br>
+          it's the whole point.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-wrap" id="contact">
+    <div>
+      <h3 class="contact-heading">Let's talk.</h3>
+      <p class="contact-sub">Open to PM and strategy roles, any industry, any scale.</p>
+    </div>
+    <div class="contact-btns">
+      <a href="https://www.linkedin.com/in/michelle-lind-karnadjaja-34b266173/" class="btn btn-outline" target="_blank">LinkedIn</a>
+      <a href="mailto:mlk268@cornell.edu" class="btn btn-filled">Get in touch</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Michelle Karnadjaja</p>
+    <p>Product &amp; Strategy Portfolio</p>
+  </footer>
+
+</div><!-- end homepage -->
+
+
+<!-- ═══════════════════════════════════════ CASE: WD ═══ -->
+<div class="case-page" id="case-wd">
+  <div class="case-hero-wrap">
+    <button class="case-back" onclick="showHome()">Back to work</button>
+    <div class="case-hero-grid">
+      <div>
+        <div class="case-eyebrow">Western Digital · SanDisk Flash Memory · Milpitas, CA · 2022–2024</div>
+        <h1 class="case-title">From Personal Frustration<br>to Team Infrastructure</h1>
+        <div class="case-meta">
+          <div class="case-meta-item">Role: <span>Firmware Validation Engineer</span></div>
+          <div class="case-meta-item">Team: <span>65 engineers</span></div>
+          <div class="case-meta-item">Impact: <span>$450K annual savings</span></div>
+        </div>
+      </div>
+      <div class="case-hero-image" style="padding:0;overflow:hidden;">
+        <img src="wd_product.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Western Digital project">
+      </div>
+    </div>
+  </div>
+  <div class="case-body">
+    <div class="case-section-title" id="wd-s0">The Moment I Noticed</div>
+    <p>Test runs at Western Digital could take anywhere from 5 minutes to 12 hours. Nobody knew when they'd finish. So engineers did what engineers do, they context-switched, checked back repeatedly, lost their train of thought, and accepted it as part of the job.</p>
+    <p>I did the same thing. Until I stopped and asked why.</p>
+    <p>There was no technical reason this had to be manual. The technology to solve it existed. So I asked around, and found something more interesting than a missing tool. Nobody was complaining. They'd just built their entire working rhythm around the uncertainty, context-switching, checking back, losing focus, without ever naming it as a problem worth solving. <strong>The workaround had become the workflow.</strong></p>
+
+    <div class="case-section-title" id="wd-s1">What I Did About It</div>
+    <p>I built it for myself first. A lightweight Python notification tool that would alert me when a test completed, nothing more. If it didn't work for me, it wasn't worth proposing to anyone else.</p>
+    <p>It worked. So I brought it to a small pilot group and watched how they used it, what broke, what they actually needed versus what I assumed they needed. I iterated. I offered one-on-one setup help. I made it easy to adopt without disrupting anyone's existing workflow, important in an environment where projects ran on 2-year cycles and teams were resistant to mid-cycle changes.</p>
+    <p>When the results were clear, I brought it to the project lead. <strong>Not as a proposal, as a proof.</strong></p>
+
+    <div class="case-section-title" id="wd-s2">The Resistance I Had to Navigate</div>
+    <p>The team's hesitation wasn't irrational. A 2-year validation cycle creates real risk aversion, nobody wants to introduce instability into a process that's already running. So I didn't ask for permission to build it. I built it, proved it, and let the pilot results make the case. By the time I presented to the full 65-person team, the question wasn't whether to adopt it, it was why they hadn't had it sooner.</p>
+
+    <div class="case-outcomes" id="wd-s3">
+      <div class="case-outcomes-title">What It Produced</div>
+      <div class="case-outcome-item"><strong>30% reduction</strong> in validation cycle time for the pilot team</div>
+      <div class="case-outcome-item"><strong>$450K</strong> in annual savings from recaptured engineering hours</div>
+      <div class="case-outcome-item"><strong>65-person team adoption</strong> — engineers, lab technicians, and product leads</div>
+      <div class="case-outcome-item"><strong>Top 3 Innovation of 2023</strong> among all 65 employees</div>
+      <div class="case-outcome-item">Still running after I left</div>
+    </div>
+
+    <div class="case-section-title" id="wd-s4">What This Was Really About</div>
+    <p>The tool wasn't complicated. What was complicated was seeing a problem that nobody had thought to name, and deciding it was worth naming.</p>
+    <div class="case-closing">That's the instinct I bring into every system I work in.</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ CASE: SIMA ═══ -->
+<div class="case-page" id="case-sima">
+  <div class="case-hero-wrap">
+    <button class="case-back" onclick="showHome()">Back to work</button>
+    <div class="case-hero-grid">
+      <div>
+        <div class="case-eyebrow">SIMA Agustus · Jakarta, Indonesia · 2024–2025</div>
+        <h1 class="case-title">The Problem Wasn't<br>the Competition</h1>
+        <div class="case-meta">
+          <div class="case-meta-item">Role: <span>Technical Product Specialist</span></div>
+          <div class="case-meta-item">Company age: <span>65 years</span></div>
+          <div class="case-meta-item">Impact: <span>80% inbound lift</span></div>
+        </div>
+      </div>
+      <div class="case-hero-image" style="padding:0;overflow:hidden;">
+        <img src="sima_product.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="SIMA Agustus project">
+      </div>
+    </div>
+  </div>
+  <div class="case-body">
+    <div class="case-section-title" id="sima-s0">The Problem They Thought They Had</div>
+    <p>SIMA Agustus has been building audiovisual and immersive experiences in Indonesia for 65 years. Clients include global names, BTS, Justin Bieber, Samsung, and installations ranging from Jakarta malls to the National Monument. The business was real. The craft was proven.</p>
+    <p>But sales were getting harder. Competitors were slashing prices and the assumption inside the company was clear: this is a pricing problem.</p>
+    <p>I wasn't so sure.</p>
+
+    <div class="case-section-title" id="sima-s1">What I Actually Looked At</div>
+    <p>I came in with no AV industry background and no inherited assumptions about how things should work. So I mapped the entire system, from the moment a potential customer first encountered SIMA to the moment they received a quote.</p>
+    <p>What I found wasn't a pricing problem. <strong>It was a front door problem.</strong></p>
+    <p>New customers interested enough to reach out were hitting a wall. The website was outdated and non-intuitive, it didn't reflect the caliber of work SIMA was actually delivering. Routing was broken, requests weren't reliably reaching the right internal teams. Some leads fell into a complete void, disappearing before anyone inside even knew they existed. The ones that survived had no structured follow-up process waiting for them.</p>
+    <p>65 years of "this is how we do it" had made all of it invisible to the people inside. To me it was obvious.</p>
+
+    <div class="case-section-title" id="sima-s2">Reframing the Problem</div>
+    <p>When I brought this to leadership the reception was open. Competitors were cheaper, but that was never SIMA's game. Premium product, proven quality, global clients. Price wasn't the lever. The real question was why interested customers weren't converting, and the answer had nothing to do with what things cost.</p>
+    <p><strong>That reframe changed where we looked and what we built.</strong></p>
+
+    <div class="case-section-title" id="sima-s3">What I Did</div>
+    <p>I redesigned the customer intake workflow end to end. I rebuilt the website to reflect SIMA's actual work, updated, intuitive, credible to a first-time visitor. I rebuilt the routing logic so every qualified inquiry reached the right internal team member. I closed the void. I created structure where there had been none.</p>
+    <p>Every decision came back to the same question: what does a new customer experience when they first try to reach us, and where do we lose them?</p>
+
+    <div class="case-outcomes" id="sima-s4">
+      <div class="case-outcomes-title">What It Produced</div>
+      <div class="case-outcome-item"><strong>80% increase</strong> in qualified inbound engagement</div>
+      <div class="case-outcome-item"><strong>100% of digital leads</strong> now reaching internal team members, the void was closed</div>
+      <div class="case-outcome-item">Measurably improved first-time customer experience across the full intake journey</div>
+    </div>
+
+    <div class="case-section-title" id="sima-s5">What This Was Really About</div>
+    <p>They thought the threat was outside, competitors with lower prices. The real gap was inside, a system that was losing interested customers before price ever became a factor.</p>
+    <div class="case-closing">I didn't know the AV industry.<br>That turned out to be the point.</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ CASE: ATLASPRO ═══ -->
+<div class="case-page" id="case-atlaspro">
+  <div class="case-hero-wrap">
+    <button class="case-back" onclick="showHome()">Back to work</button>
+    <div class="case-hero-grid">
+      <div>
+        <div class="case-eyebrow">AtlasPro AI · San Francisco, CA (Remote) · January 2026–Present</div>
+        <h1 class="case-title">Finding What's<br>Worth Building</h1>
+        <div class="case-meta">
+          <div class="case-meta-item">Role: <span>PM Intern → Competitive Intelligence Fellow</span></div>
+          <div class="case-meta-item">Scale: <span>27,915 signals</span></div>
+          <div class="case-meta-item">Status: <span>Features in progress</span></div>
+        </div>
+      </div>
+      <div class="case-hero-image" style="aspect-ratio:auto;background:none;border:none;padding:0;overflow:hidden;">
+        <img src="atlaspro_artifact.png" style="width:100%;height:auto;object-fit:contain;display:block;" alt="AtlasPro AI — Impact vs Complexity Map">
+      </div>
+    </div>
+  </div>
+  <div class="case-body">
+    <div class="case-section-title" id="atlaspro-s0">The Brief</div>
+    <p>Most product briefs come with constraints, a problem to solve, a user to serve, a direction to explore. The brief I got at AtlasPro AI was different.</p>
+    <p><em><strong>Propose what to build next. It needs to have product market fit.</strong></em></p>
+    <p>That was it. No prescribed method, no defined scope, no inherited research to build on. Just an early-stage AI startup in the location analytics space and an open question that the whole company's next move depended on.</p>
+
+    <div class="case-section-title" id="atlaspro-s1">Where I Started</div>
+    <p>I had no background in location or geospatial analytics. So before I could answer what to build, I had to understand the landscape well enough to ask the right questions.</p>
+    <p>I conducted a full industry and competitive analysis, mapping the market, the key players, the business models, the regulatory environment, the technology constraints, the user habits, and the broader ecosystem dynamics. I considered every angle before deciding where to look next.</p>
+    <p>The founder wanted to check if an outsider saw what she saw. <strong>I came back with points she hadn't encountered.</strong> That told us both the research was working.</p>
+    <p>It also told me the original scope was too broad. AtlasPro had been considering both location analytics and geospatial analytics as target markets. I proposed narrowing to geospatial analytics only, a more defensible, higher-signal opportunity. The founder agreed. Scope set.</p>
+
+    <div class="case-section-title" id="atlaspro-s2">Going Deeper</div>
+    <p>With the landscape understood and scope narrowed, I designed a targeted research phase to get closer to real user frustration, not polished feedback, not competitor marketing claims, but what people actually say online when nobody's packaging it for them.</p>
+    <p>I determined the methodology myself. I identified 22 sources across 8 platform types, StackExchange, Reddit, GitHub, Discourse, Khoros, and others. I collected 27,915 posts, cleaned and deduplicated them to 26,982, and flagged 6,707 posts carrying frustration markers, 24.8% of the entire dataset. I ran NLP clustering and BERTopic topic modeling to surface 80+ topic clusters from the noise.</p>
+    <p><strong>Every decision about what to collect, where to look, and how to interpret it was mine.</strong></p>
+
+    <div class="case-section-title" id="atlaspro-s3">Turning Signals Into Decisions</div>
+    <p>Raw clusters aren't a product strategy. I mapped every cluster onto a two-dimensional impact versus complexity framework and built an interactive visualization the founding team could navigate, not a static deck, but a live decision-making tool showing where the highest-leverage opportunities lived relative to the effort required to build them.</p>
+    <p>The founder could look at the map and see exactly which problems were worth solving first, grounded in real user signal rather than assumption.</p>
+
+    <div class="case-outcomes" id="atlaspro-s4">
+      <div class="case-outcomes-title">What It Produced</div>
+      <div class="case-outcome-item"><strong>10 companies across 2 market sectors</strong> — comprehensive industry and competitive analysis, including points the founder hadn't previously surfaced</div>
+      <div class="case-outcome-item"><strong>Scope narrowed from 2 markets to 1</strong> — recommendation accepted by the founder</div>
+      <div class="case-outcome-item"><strong>27,915 posts collected</strong> — across 22 sources and 8 platform types</div>
+      <div class="case-outcome-item"><strong>80+ topic clusters</strong> — generated, labeled, and mapped</div>
+      <div class="case-outcome-item"><strong>Feature prioritization framework</strong> — impact vs. complexity map built to guide product decisions</div>
+      <div class="case-outcome-item"><strong>Promoted to Competitive Intelligence Fellow</strong> — from Product Management Intern, based on research quality and strategic depth</div>
+    </div>
+
+    <div class="case-section-title" id="atlaspro-s5">What This Was Really About</div>
+    <p>The brief was open-ended by design, that's the hardest kind. No playbook, no senior PM to check with, no predefined scope to stay inside.</p>
+    <p>I designed the method, ran the research, challenged the scope, found what the insider had missed, and handed the founding team a map they could navigate by.</p>
+    <div class="case-closing">That's what I mean when I say<br>I find what's worth building.</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ SPOTLIGHT: SERVICENOW ═══ -->
+<div class="case-page" id="case-servicenow">
+  <div class="case-hero-wrap">
+    <button class="case-back" onclick="showHome()">Back to work</button>
+    <div class="case-hero-grid">
+      <div>
+        <div class="case-eyebrow">Cornell MBA Consulting · Enterprise SaaS · 2025</div>
+        <h1 class="case-title">The Problem Wasn't<br>the Product</h1>
+        <div class="case-meta">
+          <div class="case-meta-item">Format: <span>4-person consulting team</span></div>
+          <div class="case-meta-item">Audience: <span>Director of PM, Growth</span></div>
+          <div class="case-meta-item">Data: <span>7,252 records across 4 platforms</span></div>
+        </div>
+      </div>
+      <div class="case-hero-image" style="aspect-ratio:auto;background:none;border:none;padding:0;overflow:hidden;">
+        <img src="cornell_product.png" style="width:100%;height:auto;object-fit:contain;display:block;" alt="ServiceNow research data visualization">
+      </div>
+    </div>
+  </div>
+  <div class="case-body">
+    <div class="case-section-title" id="servicenow-s0">The Question</div>
+    <p>A major enterprise SaaS platform was seeing slower than expected adoption of its AI-native, low-code app building experience. The assumption in the market was that competing tools were winning on product.</p>
+    <p><strong>The public data told a different story.</strong></p>
+
+    <div class="case-section-title" id="servicenow-s1">What the Data Showed</div>
+    <p>Across 7,252 records collected from LinkedIn, X/Twitter, and Reddit spanning four platforms, one finding stood out above everything else.</p>
+    <p>The enterprise platform had <strong>0% share of the vibe coding conversation online</strong>. Three key competitors each sat at 29–31%. Not a small gap, a complete absence.</p>
+    <p>Meanwhile a keyword analysis of 746 LinkedIn posts showed the platform's most advanced AI feature at 2% of topic share versus Low Code at 21%. The most powerful capability in the product was barely being discussed, by anyone.</p>
+    <p><strong>The gap wasn't product. It was awareness and positioning.</strong></p>
+
+    <div class="case-section-title" id="servicenow-s2">The Insight That Changed the Framing</div>
+    <p>Organic practitioner posts averaged <strong>8× more views</strong> than coordinated branded posts, 90 versus 11 average views. The platform's own voice was being outperformed by users talking about the product on their own terms.</p>
+    <p>The implication was clear: the adoption problem wasn't that the product wasn't good enough. It was that the people who needed to know about its most powerful capability didn't know it existed.</p>
+    <p>That reframe changed the entire strategic recommendation.</p>
+
+    <div class="case-outcomes" id="servicenow-s3">
+      <div class="case-outcomes-title">What We Delivered</div>
+      <div class="case-outcome-item">Actionable roadmap presented to <strong>Director of Product Management for Growth</strong></div>
+      <div class="case-outcome-item">Analysis grounded in <strong>7,252 records</strong> across 4 platforms</div>
+      <div class="case-outcome-item">Competitive intelligence across <strong>6,233 competitor records</strong></div>
+      <div class="case-outcome-item">Core recommendation: <strong>solve the awareness gap before touching the product</strong></div>
+    </div>
+
+    <div class="case-closing">The data didn't confirm the hypothesis.<br>It replaced it.</div>
+  </div>
+</div>
+
+
+<script>
+  // ── Case study routing ──────────────────────────────────────
+  const cpnConfig = {
+    wd: [
+      { id: 'wd-s0', label: 'Noticed' },
+      { id: 'wd-s1', label: 'Response' },
+      { id: 'wd-s2', label: 'Resistance' },
+      { id: 'wd-s3', label: 'Outcomes' },
+      { id: 'wd-s4', label: 'Reflection' }
+    ],
+    sima: [
+      { id: 'sima-s0', label: 'Problem' },
+      { id: 'sima-s1', label: 'Research' },
+      { id: 'sima-s2', label: 'Reframe' },
+      { id: 'sima-s3', label: 'Approach' },
+      { id: 'sima-s4', label: 'Outcomes' },
+      { id: 'sima-s5', label: 'Reflection' }
+    ],
+    atlaspro: [
+      { id: 'atlaspro-s0', label: 'Brief' },
+      { id: 'atlaspro-s1', label: 'Start' },
+      { id: 'atlaspro-s2', label: 'Deeper' },
+      { id: 'atlaspro-s3', label: 'Decisions' },
+      { id: 'atlaspro-s4', label: 'Outcomes' },
+      { id: 'atlaspro-s5', label: 'Reflection' }
+    ],
+    servicenow: [
+      { id: 'servicenow-s0', label: 'Question' },
+      { id: 'servicenow-s1', label: 'Data' },
+      { id: 'servicenow-s2', label: 'Insight' },
+      { id: 'servicenow-s3', label: 'Outcomes' }
+    ]
+  };
+
+  let navScrollListener = null;
+  let ticking = false;
+  let heroObserver = null;
+
+  function buildProgressNav(caseId) {
+    const nav = document.getElementById('case-progress-nav');
+    const items = cpnConfig[caseId] || [];
+    nav.innerHTML = '';
+
+    items.forEach((item, i) => {
+      if (i > 0) {
+        const conn = document.createElement('div');
+        conn.className = 'cpn-connector';
+        conn.dataset.index = i;
+        nav.appendChild(conn);
+      }
+      const wrap = document.createElement('div');
+      wrap.className = 'cpn-item' + (i === 0 ? ' active' : '');
+      wrap.dataset.target = item.id;
+      wrap.dataset.index = i;
+
+      const dot = document.createElement('div');
+      dot.className = 'cpn-dot';
+
+      const label = document.createElement('span');
+      label.className = 'cpn-label';
+      label.textContent = item.label;
+
+      wrap.appendChild(dot);
+      wrap.appendChild(label);
+      wrap.addEventListener('click', () => {
+        const target = document.getElementById(item.id);
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+      nav.appendChild(wrap);
+    });
+
+    function updateActive(activeIndex) {
+      nav.querySelectorAll('.cpn-item').forEach((el, i) => {
+        el.classList.toggle('active', i === activeIndex);
+      });
+      nav.querySelectorAll('.cpn-connector').forEach(el => {
+        const idx = parseInt(el.dataset.index, 10);
+        el.classList.toggle('active', idx <= activeIndex);
+      });
+    }
+
+    const sectionEls = items.map(item => document.getElementById(item.id)).filter(Boolean);
+
+    function updateActiveNav() {
+      const scrollY = window.scrollY;
+      let activeIdx = 0;
+      sectionEls.forEach((el, i) => {
+        if (el.offsetTop <= scrollY + 120) activeIdx = i;
+      });
+      updateActive(activeIdx);
+    }
+
+    if (navScrollListener) window.removeEventListener('scroll', navScrollListener);
+    navScrollListener = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { updateActiveNav(); ticking = false; });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', navScrollListener);
+    updateActiveNav();
+  }
+
+  function hideProgressNav() {
+    const nav = document.getElementById('case-progress-nav');
+    nav.classList.remove('visible');
+    nav.innerHTML = '';
+    if (navScrollListener) { window.removeEventListener('scroll', navScrollListener); navScrollListener = null; }
+    if (heroObserver) { heroObserver.disconnect(); heroObserver = null; }
+  }
+
+  function showCase(id) {
+    document.getElementById('homepage').classList.add('hidden');
+    document.querySelectorAll('.case-page').forEach(p => p.classList.remove('active'));
+    document.getElementById('case-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    buildProgressNav(id);
+
+    if (heroObserver) heroObserver.disconnect();
+    const heroWrap = document.querySelector('#case-' + id + ' .case-hero-wrap');
+    const cpnNav = document.getElementById('case-progress-nav');
+    if (heroWrap) {
+      heroObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            cpnNav.classList.remove('visible');
+          } else {
+            cpnNav.classList.add('visible');
+          }
+        });
+      }, { threshold: 0 });
+      heroObserver.observe(heroWrap);
+    }
+  }
+  function showHome() {
+    document.getElementById('homepage').classList.remove('hidden');
+    document.querySelectorAll('.case-page').forEach(p => p.classList.remove('active'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    hideProgressNav();
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
