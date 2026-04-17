@@ -2,7 +2,7 @@
 
 Personal portfolio showcasing product management and strategy work across Western Digital, SIMA Agustus, AtlasPro AI, and Cornell MBA consulting.
 
-**Live site:** https://yourusername.github.io/portfolio
+**Live site:** https://Michellelind.github.io/portfolio
 
 ## About
 Built with vanilla HTML, CSS, and JavaScript — single file, no frameworks, no dependencies.
