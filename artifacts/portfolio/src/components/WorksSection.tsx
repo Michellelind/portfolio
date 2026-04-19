@@ -94,39 +94,28 @@ function CaseCard({ card }: { card: CaseCard }) {
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
 
-      {/* Dark gradient overlay — heavier at bottom for text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/25" />
+      {/* Dark gradient overlay — heavier at bottom, stronger at top for light images */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/50" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col h-full p-6 md:p-7">
 
-        {/* Top row: logo + company | CTA button */}
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <img
-              src={card.logo}
-              alt={card.logoAlt}
-              className="w-7 h-7 rounded-md object-cover shrink-0"
-            />
-            <span className="text-[10px] md:text-xs text-white/60 leading-tight truncate">
-              {card.company}
-            </span>
-          </div>
-
-          {/* CTA pill — always visible, top right */}
-          <a
-            href="#"
-            className="shrink-0 rounded-full border-2 border-[#2d2d96] bg-black hover:bg-[#2d2d96]/20 transition-colors px-3 py-1.5 text-white whitespace-nowrap"
-            data-testid={`btn-cta-${card.company.split(" ")[0].toLowerCase()}`}
-          >
-            <span className="text-xs md:text-sm">{card.cta}</span>
-          </a>
+        {/* Top row: logo + company name */}
+        <div className="flex items-center gap-2.5 min-w-0">
+          <img
+            src={card.logo}
+            alt={card.logoAlt}
+            className="w-7 h-7 rounded-md object-cover shrink-0"
+          />
+          <span className="text-[10px] md:text-xs text-white/60 leading-tight">
+            {card.company}
+          </span>
         </div>
 
         {/* Spacer */}
         <div className="flex-1" />
 
-        {/* Bottom: title, description, tags */}
+        {/* Bottom: title, description, tags, CTA */}
         <div>
           <h3 className="text-lg md:text-xl lg:text-2xl font-display italic text-white leading-tight mb-2">
             {card.title}
@@ -134,7 +123,7 @@ function CaseCard({ card }: { card: CaseCard }) {
           <p className="text-xs md:text-sm text-white/60 leading-relaxed mb-4 line-clamp-3">
             {card.description}
           </p>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5 mb-4">
             {card.tags.map((tag) => (
               <span
                 key={tag}
@@ -144,6 +133,13 @@ function CaseCard({ card }: { card: CaseCard }) {
               </span>
             ))}
           </div>
+          <a
+            href="#"
+            className="inline-block shrink-0 rounded-full border-2 border-[#2d2d96] bg-black hover:bg-[#2d2d96]/20 transition-colors px-3 py-1.5 text-white whitespace-nowrap"
+            data-testid={`btn-cta-${card.company.split(" ")[0].toLowerCase()}`}
+          >
+            <span className="text-xs md:text-sm">{card.cta}</span>
+          </a>
         </div>
       </div>
     </div>
