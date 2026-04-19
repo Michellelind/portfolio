@@ -16,6 +16,17 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
 
+## Artifacts
+
+### Portfolio Landing Page (`artifacts/portfolio`)
+- Dark, cinematic single-page portfolio for "Michael Smith"
+- Sections: Loading screen → Hero (HLS video bg) → Selected Works (bento grid) → Journal → Explorations (parallax) → Stats → Footer (GSAP marquee)
+- Tech: React + Vite + Tailwind CSS + GSAP + Framer Motion + hls.js
+- No backend — frontend only
+- Fonts: Inter + Instrument Serif
+- Accent gradient: #89AACC → #4E85BF
+- Served at: `/`
+
 ## Key Commands
 
 - `pnpm run typecheck` — full typecheck across all packages
