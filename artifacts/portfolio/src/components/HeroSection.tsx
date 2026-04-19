@@ -76,12 +76,6 @@ export default function HeroSection() {
       {/* Center content */}
       <div className="relative z-10 text-center px-4 mt-16">
 
-        {/* Text above name — where eyebrow was */}
-        <p className="blur-in text-sm md:text-base text-muted max-w-md mx-auto mb-8 leading-relaxed">
-          Most people walk into a system and learn how it works.<br />
-          I walk in and ask why.
-        </p>
-
         <h1 className="name-reveal text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight text-text-primary mb-6">
           Michelle Karnadjaja
         </h1>

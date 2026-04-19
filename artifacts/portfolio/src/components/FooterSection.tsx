@@ -37,7 +37,7 @@ export default function FooterSection() {
         {/* CTA block */}
         <div className="text-center px-4 mb-20">
           {/* "Let's talk." heading */}
-          <h2 className="text-6xl md:text-8xl lg:text-9xl font-display italic text-text-primary mb-6 leading-none">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display italic text-text-primary mb-6 leading-none">
             Let's talk.
           </h2>
 
@@ -49,25 +49,25 @@ export default function FooterSection() {
           {/* Two buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/michelle-lind-karnadjaja-34b266173/"
               target="_blank"
               rel="noopener noreferrer"
               className="relative group rounded-full"
               data-testid="btn-linkedin"
             >
               <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-bg border border-stroke group-hover:border-transparent text-text-primary rounded-full px-8 py-4 text-base font-display italic transition duration-300">
+              <div className="relative bg-bg border border-stroke group-hover:border-transparent text-text-primary rounded-full px-8 py-4 text-base transition duration-300">
                 LinkedIn ↗
               </div>
             </a>
 
             <a
-              href="mailto:hello@michellekarnadjaja.com"
+              href="mailto:mlk268@cornell.edu"
               className="relative group rounded-full"
               data-testid="btn-get-in-touch"
             >
               <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-text-primary text-bg rounded-full px-8 py-4 text-base font-display italic group-hover:bg-bg group-hover:text-text-primary transition duration-300">
+              <div className="relative bg-text-primary text-bg rounded-full px-8 py-4 text-base group-hover:bg-bg group-hover:text-text-primary transition duration-300">
                 Get In Touch ↗
               </div>
             </a>
@@ -82,10 +82,6 @@ export default function FooterSection() {
             Product &amp; Strategy Portfolio
           </div>
 
-          <div className="flex items-center gap-2 bg-surface/50 border border-stroke/50 rounded-full px-3 py-1.5">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span>Available for projects</span>
-          </div>
         </div>
       </div>
     </footer>

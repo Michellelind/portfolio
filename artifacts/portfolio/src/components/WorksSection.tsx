@@ -119,7 +119,7 @@ function CaseCard({ card }: { card: CaseCard }) {
             className="shrink-0 rounded-full border-2 border-[#2d2d96] bg-black hover:bg-[#2d2d96]/20 transition-colors px-3 py-1.5 text-white whitespace-nowrap"
             data-testid={`btn-cta-${card.company.split(" ")[0].toLowerCase()}`}
           >
-            <span className="font-display italic text-xs md:text-sm">{card.cta}</span>
+            <span className="text-xs md:text-sm">{card.cta}</span>
           </a>
         </div>
 
