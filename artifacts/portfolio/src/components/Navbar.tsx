@@ -23,7 +23,7 @@ export default function Navbar() {
         <Link href="/" className="w-9 h-9 rounded-full relative group cursor-pointer overflow-hidden flex items-center justify-center bg-bg shrink-0">
           <div className="absolute inset-0 rounded-full accent-gradient group-hover:rotate-180 transition-transform duration-500" />
           <div className="absolute inset-[2px] rounded-full bg-bg flex items-center justify-center group-hover:scale-110 transition-transform">
-            <span className="font-display italic text-[13px] text-text-primary">JA</span>
+            <span className="font-display italic text-[13px] text-text-primary">MK</span>
           </div>
         </Link>
 

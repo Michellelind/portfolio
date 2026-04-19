@@ -116,12 +116,10 @@ function CaseCard({ card }: { card: CaseCard }) {
           {/* CTA pill — always visible, top right */}
           <a
             href="#"
-            className="shrink-0 relative rounded-full p-[1px] bg-gradient-to-r from-[#89AACC] to-[#4E85BF] opacity-80 hover:opacity-100 transition-opacity"
+            className="shrink-0 rounded-full border-2 border-[#2d2d96] bg-black hover:bg-[#2d2d96]/20 transition-colors px-3 py-1.5 text-white whitespace-nowrap"
             data-testid={`btn-cta-${card.company.split(" ")[0].toLowerCase()}`}
           >
-            <div className="bg-black/80 backdrop-blur-sm rounded-full px-3 py-1.5 text-white whitespace-nowrap">
-              <span className="font-display italic text-xs md:text-sm">{card.cta}</span>
-            </div>
+            <span className="font-display italic text-xs md:text-sm">{card.cta}</span>
           </a>
         </div>
 

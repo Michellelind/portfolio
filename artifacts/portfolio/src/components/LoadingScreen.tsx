@@ -7,13 +7,12 @@ const phrases = [
   { text: "I walk in and ask why.", bold: "why" },
 ];
 
-// 3 phrases × 2700ms each = 8100ms total (3× slower than before)
-const PHRASE_INTERVAL = 2700;
-const TOTAL_DURATION = PHRASE_INTERVAL * phrases.length; // 8100ms
+// Phrase 1+2: 2700ms each, Phrase 3: 3700ms (+1 extra second)
+const TIMINGS = [0, 2700, 5400];
+const TOTAL_DURATION = 5400 + 3700; // 9100ms
 
 function PhraseText({ text, bold }: { text: string; bold: string | null }) {
   if (!bold) return <>{text}</>;
-
   const parts = text.split(bold);
   return (
     <>
@@ -36,15 +35,12 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
       const percentage = Math.min((progress / TOTAL_DURATION) * 100, 100);
-
       setCount(Math.floor(percentage));
 
       if (progress < TOTAL_DURATION) {
         animationFrame = requestAnimationFrame(animate);
       } else {
-        setTimeout(() => {
-          onComplete();
-        }, 400);
+        setTimeout(() => onComplete(), 400);
       }
     };
 
@@ -53,11 +49,10 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
   }, [onComplete]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setPhraseIndex((current) => (current + 1) % phrases.length);
-    }, PHRASE_INTERVAL);
-
-    return () => clearInterval(interval);
+    const timeouts = TIMINGS.map((delay, i) =>
+      setTimeout(() => setPhraseIndex(i), delay)
+    );
+    return () => timeouts.forEach(clearTimeout);
   }, []);
 
   return (
@@ -80,10 +75,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl lg:text-6xl font-display italic text-text-primary/80 text-center max-w-3xl leading-tight"
           >
-            <PhraseText
-              text={phrases[phraseIndex].text}
-              bold={phrases[phraseIndex].bold}
-            />
+            <PhraseText text={phrases[phraseIndex].text} bold={phrases[phraseIndex].bold} />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -94,14 +86,10 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             {String(count).padStart(3, "0")}
           </span>
         </div>
-
         <div className="h-[3px] bg-stroke/50 w-full overflow-hidden">
           <div
             className="h-full accent-gradient transition-all duration-75"
-            style={{
-              width: `${count}%`,
-              boxShadow: "0 0 8px rgba(137, 170, 204, 0.35)",
-            }}
+            style={{ width: `${count}%`, boxShadow: "0 0 8px rgba(137, 170, 204, 0.35)" }}
           />
         </div>
       </div>
