@@ -39,7 +39,7 @@ export default function JournalSection() {
       >
         <div className="flex items-center gap-4 mb-6">
           <div className="w-8 h-px bg-stroke" />
-          <span className="text-xs text-muted uppercase tracking-[0.3em]">Journal</span>
+          <span className="text-xs text-muted uppercase tracking-[0.3em]">About</span>
         </div>
         <h2 className="text-4xl md:text-5xl lg:text-6xl text-text-primary">
           Recent <span className="font-display italic">thoughts</span>

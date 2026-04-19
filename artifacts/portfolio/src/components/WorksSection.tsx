@@ -19,7 +19,6 @@ interface CaseCard {
   image: string;
   imageAlt: string;
   span: string;
-  aspect: string;
 }
 
 const cards: CaseCard[] = [
@@ -35,7 +34,6 @@ const cards: CaseCard[] = [
     image: wdProduct,
     imageAlt: "WD Black P10 Game Drive",
     span: "md:col-span-7",
-    aspect: "aspect-[4/3]",
   },
   {
     logo: simaLogo,
@@ -49,7 +47,6 @@ const cards: CaseCard[] = [
     image: simaProduct,
     imageAlt: "Sima Agustus concert",
     span: "md:col-span-5",
-    aspect: "aspect-[3/4]",
   },
   {
     logo: atlasproLogo,
@@ -63,7 +60,6 @@ const cards: CaseCard[] = [
     image: atlasproArtifact,
     imageAlt: "AtlasPro signal cluster map",
     span: "md:col-span-5",
-    aspect: "aspect-[3/4]",
   },
   {
     logo: servicenowLogo,
@@ -77,14 +73,13 @@ const cards: CaseCard[] = [
     image: cornellProduct,
     imageAlt: "ServiceNow research chart",
     span: "md:col-span-7",
-    aspect: "aspect-[4/3]",
   },
 ];
 
 function CaseCard({ card }: { card: CaseCard }) {
   return (
     <div
-      className={`relative group overflow-hidden bg-surface border border-stroke rounded-3xl cursor-pointer ${card.span} ${card.aspect}`}
+      className={`relative group overflow-hidden bg-surface border border-stroke rounded-3xl cursor-pointer min-h-[420px] ${card.span}`}
       data-testid={`card-project-${card.company.split(" ")[0].toLowerCase()}`}
     >
       {/* Background image */}
@@ -101,13 +96,13 @@ function CaseCard({ card }: { card: CaseCard }) {
       <div className="relative z-10 flex flex-col h-full p-6 md:p-7">
 
         {/* Top row: logo + company name */}
-        <div className="flex items-center gap-2.5 min-w-0">
+        <div className="inline-flex items-center gap-2.5 bg-black/50 backdrop-blur-sm rounded-xl px-2.5 py-1.5">
           <img
             src={card.logo}
             alt={card.logoAlt}
             className="w-7 h-7 rounded-md object-cover shrink-0"
           />
-          <span className="text-[10px] md:text-xs text-white/60 leading-tight">
+          <span className="text-[10px] md:text-xs text-white/80 leading-tight">
             {card.company}
           </span>
         </div>
@@ -135,10 +130,10 @@ function CaseCard({ card }: { card: CaseCard }) {
           </div>
           <a
             href="#"
-            className="inline-block shrink-0 rounded-full border-2 border-[#2d2d96] bg-black hover:bg-[#2d2d96]/20 transition-colors px-3 py-1.5 text-white whitespace-nowrap"
+            className="inline-block text-xs md:text-sm text-white/70 hover:text-white underline-offset-4 hover:underline transition-colors"
             data-testid={`btn-cta-${card.company.split(" ")[0].toLowerCase()}`}
           >
-            <span className="text-xs md:text-sm">{card.cta}</span>
+            {card.cta}
           </a>
         </div>
       </div>

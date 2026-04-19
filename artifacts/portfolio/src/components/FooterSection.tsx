@@ -57,7 +57,7 @@ export default function FooterSection() {
             >
               <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative bg-bg border border-stroke group-hover:border-transparent text-text-primary rounded-full px-8 py-4 text-base transition duration-300">
-                LinkedIn ↗
+                LinkedIn
               </div>
             </a>
 
@@ -68,7 +68,7 @@ export default function FooterSection() {
             >
               <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative bg-text-primary text-bg rounded-full px-8 py-4 text-base group-hover:bg-bg group-hover:text-text-primary transition duration-300">
-                Get In Touch ↗
+                Get In Touch
               </div>
             </a>
           </div>
