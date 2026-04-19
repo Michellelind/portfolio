@@ -1,25 +1,45 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const words = ["Design", "Create", "Inspire"];
+const phrases = [
+  { text: "Most people walk into a system", bold: null },
+  { text: "and learn how it works.", bold: null },
+  { text: "I walk in and ask why.", bold: "why" },
+];
+
+// 3 phrases × 2700ms each = 8100ms total (3× slower than before)
+const PHRASE_INTERVAL = 2700;
+const TOTAL_DURATION = PHRASE_INTERVAL * phrases.length; // 8100ms
+
+function PhraseText({ text, bold }: { text: string; bold: string | null }) {
+  if (!bold) return <>{text}</>;
+
+  const parts = text.split(bold);
+  return (
+    <>
+      {parts[0]}
+      <span className="font-bold not-italic">{bold}</span>
+      {parts[1]}
+    </>
+  );
+}
 
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [count, setCount] = useState(0);
-  const [wordIndex, setWordIndex] = useState(0);
+  const [phraseIndex, setPhraseIndex] = useState(0);
 
   useEffect(() => {
     let startTime: number;
     let animationFrame: number;
-    const duration = 2700;
 
     const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
-      const percentage = Math.min((progress / duration) * 100, 100);
-      
+      const percentage = Math.min((progress / TOTAL_DURATION) * 100, 100);
+
       setCount(Math.floor(percentage));
 
-      if (progress < duration) {
+      if (progress < TOTAL_DURATION) {
         animationFrame = requestAnimationFrame(animate);
       } else {
         setTimeout(() => {
@@ -29,21 +49,20 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
     };
 
     animationFrame = requestAnimationFrame(animate);
-
     return () => cancelAnimationFrame(animationFrame);
   }, [onComplete]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setWordIndex((current) => (current + 1) % words.length);
-    }, 900);
+      setPhraseIndex((current) => (current + 1) % phrases.length);
+    }, PHRASE_INTERVAL);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="fixed inset-0 z-[9999] bg-bg flex flex-col justify-between p-6 md:p-12">
-      <motion.div 
+      <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         className="text-xs text-muted uppercase tracking-[0.3em]"
@@ -51,17 +70,20 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         Portfolio
       </motion.div>
 
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center px-4">
         <AnimatePresence mode="wait">
           <motion.div
-            key={wordIndex}
+            key={phraseIndex}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-display italic text-text-primary/80"
+            transition={{ duration: 0.5 }}
+            className="text-3xl md:text-5xl lg:text-6xl font-display italic text-text-primary/80 text-center max-w-3xl leading-tight"
           >
-            {words[wordIndex]}
+            <PhraseText
+              text={phrases[phraseIndex].text}
+              bold={phrases[phraseIndex].bold}
+            />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -72,13 +94,13 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             {String(count).padStart(3, "0")}
           </span>
         </div>
-        
+
         <div className="h-[3px] bg-stroke/50 w-full overflow-hidden">
-          <div 
+          <div
             className="h-full accent-gradient transition-all duration-75"
-            style={{ 
+            style={{
               width: `${count}%`,
-              boxShadow: '0 0 8px rgba(137, 170, 204, 0.35)'
+              boxShadow: "0 0 8px rgba(137, 170, 204, 0.35)",
             }}
           />
         </div>
