@@ -13,7 +13,7 @@ export default function HeroSection() {
     const video = videoRef.current;
     if (!video) return;
 
-    const url = "https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8";
+    const url = "https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8";
 
     if (Hls.isSupported()) {
       const hls = new Hls({
