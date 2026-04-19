@@ -18,10 +18,10 @@ export default function Index() {
       <div className={isLoading ? "h-screen overflow-hidden" : ""}>
         <Navbar />
         <HeroSection />
+        <StatsSection />
         <WorksSection />
         <JournalSection />
         <ExplorationsSection />
-        <StatsSection />
         <FooterSection />
       </div>
     </main>

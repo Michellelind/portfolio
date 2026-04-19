@@ -37,7 +37,7 @@ export default function Navbar() {
             Work
           </button>
           <button className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-muted hover:text-text-primary hover:bg-stroke/50 transition">
-            Resume
+            About
           </button>
         </div>
 
@@ -46,7 +46,7 @@ export default function Navbar() {
         <button className="relative group rounded-full shrink-0">
           <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
           <div className="relative bg-surface rounded-full py-1.5 px-4 text-xs sm:text-sm text-text-primary whitespace-nowrap">
-            Say hi ↗
+            Contact ↗
           </div>
         </button>
       </div>

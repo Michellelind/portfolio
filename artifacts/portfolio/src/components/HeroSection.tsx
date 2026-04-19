@@ -67,11 +67,11 @@ export default function HeroSection() {
 
       <div className="relative z-10 text-center px-4 mt-20">
         <p className="blur-in text-xs text-muted uppercase tracking-[0.3em] mb-8">
-          COLLECTION '26
+          PRODUCT & STRATEGY
         </p>
         
         <h1 className="name-reveal text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight text-text-primary mb-6">
-          Michael Smith
+          Michelle Karnadjaja
         </h1>
         
         <div className="blur-in text-lg md:text-xl text-muted mb-6 flex items-center justify-center flex-wrap gap-2">
@@ -83,7 +83,7 @@ export default function HeroSection() {
         </div>
         
         <p className="blur-in text-sm md:text-base text-muted max-w-md mx-auto mb-12">
-          Designing seamless digital interactions by focusing on the unique nuances which bring systems to life.
+          I ask why more than most people are comfortable with — that's where the interesting problems live.
         </p>
         
         <div className="blur-in flex flex-wrap items-center justify-center gap-4">

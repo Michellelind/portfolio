@@ -48,7 +48,7 @@ export default function WorksSection() {
               Featured <span className="font-display italic">projects</span>
             </h2>
             <p className="text-sm text-muted max-w-md">
-              A selection of projects I've worked on, from concept to launch.
+              A selection of projects I've worked on.
             </p>
           </div>
           
