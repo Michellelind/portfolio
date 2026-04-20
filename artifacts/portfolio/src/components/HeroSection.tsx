@@ -99,7 +99,10 @@ export default function HeroSection() {
         </p>
 
         <div className="blur-in flex flex-wrap items-center justify-center gap-4">
-          <button className="relative group rounded-full">
+          <button
+            onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            className="relative group rounded-full"
+          >
             <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative bg-text-primary text-bg rounded-full px-7 py-3.5 text-sm hover:bg-bg hover:text-text-primary transition duration-300 group-hover:scale-105">
               See Works
