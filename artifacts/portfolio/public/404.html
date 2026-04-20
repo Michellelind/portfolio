@@ -5,10 +5,11 @@
   <script>
     // Redirect all 404s back to index.html preserving the path for client-side routing
     var l = window.location;
+    var base = l.pathname.split('/').slice(0, 2).join('/'); // e.g. "/portfolio"
+    var sub = l.pathname.split('/').slice(2).join('/');     // e.g. "work/western-digital"
     l.replace(
       l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 2).join('/') +
-      '/?p=' + encodeURIComponent(l.pathname.slice(1) + l.search) +
+      base + '/?p=' + encodeURIComponent(sub + l.search) +
       (l.hash || '')
     );
   </script>

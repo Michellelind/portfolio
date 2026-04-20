@@ -30,9 +30,7 @@ export default function Navbar() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 md:pt-6 px-4">
       <div 
-        className={`inline-flex items-center rounded-full backdrop-blur-md border border-white/10 bg-surface px-2 py-2 transition-all duration-300 ${
-          scrolled ? "shadow-md shadow-black/10" : ""
-        }`}
+        className={`inline-flex items-center rounded-full backdrop-blur-md border border-white/20 bg-surface px-2 py-2 transition-all duration-300 shadow-lg shadow-black/30`}
       >
         <Link href="/" className="w-9 h-9 rounded-full relative group cursor-pointer overflow-hidden flex items-center justify-center bg-bg shrink-0">
           <div className="absolute inset-0 rounded-full accent-gradient group-hover:rotate-180 transition-transform duration-500" />
