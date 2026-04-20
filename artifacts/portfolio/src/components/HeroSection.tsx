@@ -24,6 +24,7 @@ export default function HeroSection() {
       hls.attachMedia(video);
     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
       video.src = url;
+      video.play().catch(() => {});
     }
   }, []);
 
@@ -108,7 +109,7 @@ export default function HeroSection() {
           <button className="relative group rounded-full">
             <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative border-2 border-stroke bg-bg text-text-primary rounded-full px-7 py-3.5 text-sm group-hover:border-transparent transition duration-300 group-hover:scale-105">
-              Reach out...
+              Reach Out
             </div>
           </button>
         </div>

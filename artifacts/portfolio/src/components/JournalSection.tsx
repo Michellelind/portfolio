@@ -35,6 +35,7 @@ export default function JournalSection() {
       hls.attachMedia(video);
     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
       video.src = url;
+      video.play().catch(() => {});
     }
   }, []);
 
