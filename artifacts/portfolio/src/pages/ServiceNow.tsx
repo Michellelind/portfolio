@@ -15,13 +15,13 @@ export default function ServiceNow() {
       imageAlt="ServiceNow research data visualization"
       imageContain
       navItems={[
-        "The Question",
-        "What the Data Showed",
-        "The Insight That Changed the Framing",
-        "What We Delivered",
+        "Question",
+        "Data",
+        "Insight",
+        "Outcomes",
       ]}
     >
-      <CaseSection title="The Question">
+      <CaseSection title="The Question" id="question">
         <P>
           A major enterprise SaaS platform was seeing slower-than-expected adoption of its AI-native,
           low-code app building experience. The assumption in the market was that competing tools were
@@ -34,7 +34,7 @@ export default function ServiceNow() {
         </P>
       </CaseSection>
 
-      <CaseSection title="What the Data Showed">
+      <CaseSection title="What the Data Showed" id="data">
         <P>
           Across 7,252 records collected from LinkedIn, X/Twitter, and Reddit spanning four platforms, one
           finding stood out above everything else.
@@ -58,7 +58,7 @@ export default function ServiceNow() {
         </P>
       </CaseSection>
 
-      <CaseSection title="The Insight That Changed the Framing">
+      <CaseSection title="The Insight That Changed the Framing" id="insight">
         <P>
           Organic practitioner posts averaged{" "}
           <strong className="text-text-primary font-semibold">8× more views</strong> than coordinated
@@ -72,7 +72,7 @@ export default function ServiceNow() {
         <P>That reframe changed the entire strategic recommendation.</P>
       </CaseSection>
 
-      <CaseOutcomes title="What We Delivered">
+      <CaseOutcomes title="What We Delivered" id="outcomes">
         <CaseOutcomeItem>
           Actionable roadmap presented to{" "}
           <strong className="text-text-primary font-semibold">
