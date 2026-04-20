@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Hls from "hls.js";
 import gsap from "gsap";
+import type { RefObject } from "react";
 
 const rolesPhrases = [
   { pre: "An ", bold: "Engineer", mid: " by ", boldEnd: "training" },
@@ -9,24 +10,11 @@ const rolesPhrases = [
   { pre: "A ", bold: "Builder", mid: " by ", boldEnd: "habit" },
 ];
 
-export default function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
+export default function HeroSection({ videoRef: externalRef }: { videoRef?: RefObject<HTMLVideoElement> }) {
+  const internalRef = useRef<HTMLVideoElement>(null);
+  const videoRef = externalRef ?? internalRef;
   const containerRef = useRef<HTMLDivElement>(null);
   const [roleIndex, setRoleIndex] = useState(0);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    const url = "https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8";
-    if (Hls.isSupported()) {
-      const hls = new Hls({ startPosition: 0, autoStartLoad: true });
-      hls.loadSource(url);
-      hls.attachMedia(video);
-    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      video.src = url;
-      video.play().catch(() => {});
-    }
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
