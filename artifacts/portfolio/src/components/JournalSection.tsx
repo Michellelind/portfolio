@@ -50,7 +50,7 @@ export default function JournalSection() {
           muted
           loop
           playsInline
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full object-cover"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto"
         />
         <div className="absolute inset-0 bg-black/65" />
         {/* Fade edges to blend with surrounding sections */}
