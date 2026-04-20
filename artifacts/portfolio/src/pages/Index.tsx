@@ -24,15 +24,23 @@ export default function Index() {
       const hls = new Hls({ startPosition: 0, autoStartLoad: true });
       hls.loadSource(HERO_URL);
       hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play().catch(() => {});
+      });
     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
       video.src = HERO_URL;
       video.load();
+      video.addEventListener("canplay", () => {
+        video.play().catch(() => {});
+      }, { once: true });
     }
   }, []);
 
   function handleComplete() {
     introPlayed = true;
     setIsLoading(false);
+    // Safety: ensure video is playing when hero becomes visible
+    heroVideoRef.current?.play().catch(() => {});
   }
 
   return (
