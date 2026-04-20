@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -30,25 +34,25 @@ export default function Navbar() {
         <div className="w-px h-5 bg-stroke mx-1 hidden sm:block" />
 
         <div className="flex items-center gap-1">
-          <button className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-text-primary bg-stroke/50 transition">
+          <button onClick={() => scrollTo("hero")} className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-text-primary bg-stroke/50 transition">
             Home
           </button>
-          <button className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-muted hover:text-text-primary hover:bg-stroke/50 transition">
+          <button onClick={() => scrollTo("work")} className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-muted hover:text-text-primary hover:bg-stroke/50 transition">
             Work
           </button>
-          <button className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-muted hover:text-text-primary hover:bg-stroke/50 transition">
+          <button onClick={() => scrollTo("about")} className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-muted hover:text-text-primary hover:bg-stroke/50 transition">
             About
           </button>
         </div>
 
         <div className="w-px h-5 bg-stroke mx-1 hidden sm:block" />
 
-        <button className="relative group rounded-full shrink-0">
+        <a href="mailto:mlk268@cornell.edu" className="relative group rounded-full shrink-0">
           <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
           <div className="relative bg-surface rounded-full py-1.5 px-4 text-xs sm:text-sm text-text-primary whitespace-nowrap">
             Contact
           </div>
-        </button>
+        </a>
       </div>
     </div>
   );

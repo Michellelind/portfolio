@@ -89,14 +89,16 @@ function CaseCard({ card }: { card: CaseCard }) {
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
 
-      {/* Dark gradient overlay — heavier at bottom, stronger at top for light images */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/50" />
+      {/* Bottom-up gradient for text legibility */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent" />
+      {/* Top-down gradient for header legibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col h-full p-6 md:p-7">
 
         {/* Top row: logo + company name */}
-        <div className="inline-flex items-center gap-2.5 bg-black/50 backdrop-blur-sm rounded-xl px-2.5 py-1.5">
+        <div className="inline-flex items-center gap-2.5">
           <img
             src={card.logo}
             alt={card.logoAlt}

@@ -17,12 +17,12 @@ export default function Index() {
       
       <div className={isLoading ? "h-screen overflow-hidden" : ""}>
         <Navbar />
-        <HeroSection />
+        <div id="hero" className="scroll-mt-20"><HeroSection /></div>
         <StatsSection />
-        <WorksSection />
-        <JournalSection />
+        <div id="work" className="scroll-mt-20"><WorksSection /></div>
+        <div id="about" className="scroll-mt-20"><JournalSection /></div>
         <ExplorationsSection />
-        <FooterSection />
+        <div id="contact"><FooterSection /></div>
       </div>
     </main>
   );
