@@ -13,6 +13,13 @@ export default function WesternDigital() {
       ]}
       image={wdProduct}
       imageAlt="Western Digital project"
+      navItems={[
+        "The Moment I Noticed",
+        "What I Did About It",
+        "The Resistance I Had to Navigate",
+        "What It Produced",
+        "What This Was Really About",
+      ]}
     >
       <CaseSection title="The Moment I Noticed">
         <P>

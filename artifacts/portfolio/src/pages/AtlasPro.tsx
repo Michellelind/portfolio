@@ -14,6 +14,14 @@ export default function AtlasPro() {
       image={atlasproArtifact}
       imageAlt="AtlasPro AI — Impact vs Complexity Map"
       imageContain
+      navItems={[
+        "The Brief",
+        "Where I Started",
+        "Going Deeper",
+        "Turning Signals Into Decisions",
+        "What It Produced",
+        "What This Was Really About",
+      ]}
     >
       <CaseSection title="The Brief">
         <P>

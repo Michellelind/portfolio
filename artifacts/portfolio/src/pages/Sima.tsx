@@ -13,6 +13,14 @@ export default function Sima() {
       ]}
       image={simaProduct}
       imageAlt="SIMA Agustus project"
+      navItems={[
+        "The Problem They Thought They Had",
+        "What I Actually Looked At",
+        "Reframing the Problem",
+        "What I Did",
+        "What It Produced",
+        "What This Was Really About",
+      ]}
     >
       <CaseSection title="The Problem They Thought They Had">
         <P>

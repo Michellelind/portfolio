@@ -14,6 +14,12 @@ export default function ServiceNow() {
       image={cornellProduct}
       imageAlt="ServiceNow research data visualization"
       imageContain
+      navItems={[
+        "The Question",
+        "What the Data Showed",
+        "The Insight That Changed the Framing",
+        "What We Delivered",
+      ]}
     >
       <CaseSection title="The Question">
         <P>
