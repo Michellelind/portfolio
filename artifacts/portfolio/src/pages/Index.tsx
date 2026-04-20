@@ -36,11 +36,16 @@ export default function Index() {
     }
   }, []);
 
+  // After loading screen is gone and overflow-hidden is removed, ensure video plays
+  useEffect(() => {
+    if (!isLoading) {
+      heroVideoRef.current?.play().catch(() => {});
+    }
+  }, [isLoading]);
+
   function handleComplete() {
     introPlayed = true;
     setIsLoading(false);
-    // Safety: ensure video is playing when hero becomes visible
-    heroVideoRef.current?.play().catch(() => {});
   }
 
   return (
