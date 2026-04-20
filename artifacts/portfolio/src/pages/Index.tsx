@@ -15,6 +15,7 @@ let introPlayed = false;
 
 export default function Index() {
   const [isLoading, setIsLoading] = useState(!introPlayed);
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
 
   // Initialize and play video only after loading screen is gone
@@ -35,7 +36,9 @@ export default function Index() {
 
   function handleComplete() {
     introPlayed = true;
+    setIsFadingOut(true);
     setIsLoading(false);
+    setTimeout(() => setIsFadingOut(false), 700);
   }
 
   return (
@@ -44,7 +47,7 @@ export default function Index() {
         {isLoading && <LoadingScreen onComplete={handleComplete} />}
       </AnimatePresence>
 
-      <div className={isLoading ? "h-screen overflow-hidden" : ""}>
+      <div className={(isLoading || isFadingOut) ? "h-screen overflow-hidden" : ""}>
         <Navbar />
         <div id="hero" className="scroll-mt-20"><HeroSection videoRef={heroVideoRef} /></div>
         <StatsSection />
