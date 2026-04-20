@@ -74,11 +74,13 @@ export default function JournalSection() {
 
             {/* Photo */}
             <div className="md:col-span-4">
-              <img
-                src={photo}
-                alt="Michelle Karnadjaja"
-                className="w-full h-full object-contain"
-              />
+              <div className="[mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
+                <img
+                  src={photo}
+                  alt="Michelle Karnadjaja"
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </div>
 
             {/* Content */}
@@ -109,7 +111,7 @@ export default function JournalSection() {
                     src={co.logo}
                     alt={co.name}
                     title={co.name}
-                    className="w-7 h-7 rounded-md object-cover"
+                    className="w-14 h-14 rounded-md object-cover"
                   />
                 ))}
               </div>
