@@ -79,7 +79,7 @@ export default function JournalSection() {
                 <img
                   src={photo}
                   alt="Michelle Karnadjaja"
-                  className="w-full h-full object-contain"
+                  className="w-3/4 md:w-full h-full object-contain mx-auto"
                 />
               </div>
             </div>
