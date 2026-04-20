@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import WorksSection from "@/components/WorksSection";
 import JournalSection from "@/components/JournalSection";
-import ExplorationsSection from "@/components/ExplorationsSection";
 import StatsSection from "@/components/StatsSection";
 import FooterSection from "@/components/FooterSection";
 
@@ -21,7 +20,6 @@ export default function Index() {
         <StatsSection />
         <div id="work" className="scroll-mt-20"><WorksSection /></div>
         <div id="about" className="scroll-mt-20"><JournalSection /></div>
-        <ExplorationsSection />
         <div id="contact"><FooterSection /></div>
       </div>
     </main>
