@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import Hls from "hls.js";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
@@ -39,7 +40,9 @@ export default function Index() {
 
   return (
     <main className="min-h-screen bg-bg text-text-primary overflow-x-hidden selection:bg-accent selection:text-black">
-      {isLoading && <LoadingScreen onComplete={handleComplete} />}
+      <AnimatePresence>
+        {isLoading && <LoadingScreen onComplete={handleComplete} />}
+      </AnimatePresence>
 
       <div className={isLoading ? "h-screen overflow-hidden" : ""}>
         <Navbar />

@@ -56,7 +56,11 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
   }, []);
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-bg flex flex-col justify-between p-6 md:p-12">
+    <motion.div
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      className="fixed inset-0 z-[9999] bg-bg flex flex-col justify-between p-6 md:p-12"
+    >
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -93,6 +97,6 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
