@@ -7,12 +7,13 @@ import JournalSection from "@/components/JournalSection";
 import StatsSection from "@/components/StatsSection";
 import FooterSection from "@/components/FooterSection";
 
+let introPlayed = false;
+
 export default function Index() {
-  const alreadySeen = sessionStorage.getItem("intro-seen") === "true";
-  const [isLoading, setIsLoading] = useState(!alreadySeen);
+  const [isLoading, setIsLoading] = useState(!introPlayed);
 
   function handleComplete() {
-    sessionStorage.setItem("intro-seen", "true");
+    introPlayed = true;
     setIsLoading(false);
   }
 
