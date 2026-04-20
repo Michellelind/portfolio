@@ -8,11 +8,17 @@ import StatsSection from "@/components/StatsSection";
 import FooterSection from "@/components/FooterSection";
 
 export default function Index() {
-  const [isLoading, setIsLoading] = useState(true);
+  const alreadySeen = sessionStorage.getItem("intro-seen") === "true";
+  const [isLoading, setIsLoading] = useState(!alreadySeen);
+
+  function handleComplete() {
+    sessionStorage.setItem("intro-seen", "true");
+    setIsLoading(false);
+  }
 
   return (
     <main className="min-h-screen bg-bg text-text-primary overflow-x-hidden selection:bg-accent selection:text-black">
-      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+      {isLoading && <LoadingScreen onComplete={handleComplete} />}
       
       <div className={isLoading ? "h-screen overflow-hidden" : ""}>
         <Navbar />

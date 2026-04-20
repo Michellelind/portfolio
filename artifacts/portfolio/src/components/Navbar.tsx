@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -7,6 +7,16 @@ function scrollTo(id: string) {
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [location, navigate] = useLocation();
+
+  function goTo(id: string) {
+    if (location === "/") {
+      scrollTo(id);
+    } else {
+      navigate("/");
+      setTimeout(() => scrollTo(id), 120);
+    }
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,13 +44,13 @@ export default function Navbar() {
         <div className="w-px h-5 bg-stroke mx-1 hidden sm:block" />
 
         <div className="flex items-center gap-1">
-          <button onClick={() => scrollTo("hero")} className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-text-primary bg-stroke/50 transition">
+          <button onClick={() => goTo("hero")} className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-text-primary bg-stroke/50 transition">
             Home
           </button>
-          <button onClick={() => scrollTo("work")} className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-muted hover:text-text-primary hover:bg-stroke/50 transition">
+          <button onClick={() => goTo("work")} className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-muted hover:text-text-primary hover:bg-stroke/50 transition">
             Work
           </button>
-          <button onClick={() => scrollTo("about")} className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-muted hover:text-text-primary hover:bg-stroke/50 transition">
+          <button onClick={() => goTo("about")} className="text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-muted hover:text-text-primary hover:bg-stroke/50 transition">
             About
           </button>
         </div>
