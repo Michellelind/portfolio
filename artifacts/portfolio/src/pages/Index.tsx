@@ -16,30 +16,19 @@ export default function Index() {
   const [isLoading, setIsLoading] = useState(!introPlayed);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
 
-  // Start buffering the hero video immediately when the page loads (during countdown)
+  // Initialize and play video only after loading screen is gone
   useEffect(() => {
+    if (isLoading) return;
     const video = heroVideoRef.current;
     if (!video) return;
     if (Hls.isSupported()) {
-      const hls = new Hls({ startPosition: 0, autoStartLoad: true });
+      const hls = new Hls({ startPosition: 0 });
       hls.loadSource(HERO_URL);
       hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        video.play().catch(() => {});
-      });
+      hls.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => {}));
     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
       video.src = HERO_URL;
-      video.load();
-      video.addEventListener("canplay", () => {
-        video.play().catch(() => {});
-      }, { once: true });
-    }
-  }, []);
-
-  // After loading screen is gone and overflow-hidden is removed, ensure video plays
-  useEffect(() => {
-    if (!isLoading) {
-      heroVideoRef.current?.play().catch(() => {});
+      video.play().catch(() => {});
     }
   }, [isLoading]);
 
