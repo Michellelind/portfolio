@@ -21,7 +21,7 @@ export default function WesternDigital() {
         "Reflection",
       ]}
     >
-      <CaseSection title="Noticed">
+      <CaseSection title="The Moment I Noticed" id="noticed">
         <P>
           Test runs at Western Digital could take anywhere from 5 minutes to 12 hours. Nobody knew when
           they'd finish. So engineers did what engineers do — they context-switched, checked back repeatedly,
@@ -37,7 +37,7 @@ export default function WesternDigital() {
         </P>
       </CaseSection>
 
-      <CaseSection title="Response">
+      <CaseSection title="What I Did About It" id="response">
         <P>
           I built it for myself first. A lightweight Python notification tool that would alert me when a
           test completed — nothing more. If it didn't work for me, it wasn't worth proposing to anyone else.
@@ -54,7 +54,7 @@ export default function WesternDigital() {
         </P>
       </CaseSection>
 
-      <CaseSection title="Resistance">
+      <CaseSection title="The Resistance I Had to Navigate" id="resistance">
         <P>
           The team's hesitation wasn't irrational. A 2-year validation cycle creates real risk aversion —
           nobody wants to introduce instability into a process that's already running. So I didn't ask for
@@ -64,7 +64,7 @@ export default function WesternDigital() {
         </P>
       </CaseSection>
 
-      <CaseOutcomes title="Outcomes">
+      <CaseOutcomes title="What It Produced" id="outcomes">
         <CaseOutcomeItem>
           <strong className="text-text-primary font-semibold">30% reduction</strong> in validation cycle
           time for the pilot team
@@ -84,7 +84,7 @@ export default function WesternDigital() {
         <CaseOutcomeItem>Still running after I left</CaseOutcomeItem>
       </CaseOutcomes>
 
-      <CaseSection title="Reflection">
+      <CaseSection title="What This Was Really About" id="reflection">
         <P>
           The tool wasn't complicated. What was complicated was seeing a problem that nobody had thought to
           name — and deciding it was worth naming.

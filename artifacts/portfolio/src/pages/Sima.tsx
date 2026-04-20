@@ -22,7 +22,7 @@ export default function Sima() {
         "Reflection",
       ]}
     >
-      <CaseSection title="Problem">
+      <CaseSection title="The Problem They Thought They Had" id="problem">
         <P>
           SIMA Agustus has been building audiovisual and immersive experiences in Indonesia for 65 years.
           Clients include global names — BTS, Justin Bieber, Samsung — and installations ranging from
@@ -35,7 +35,7 @@ export default function Sima() {
         <P>I wasn't so sure.</P>
       </CaseSection>
 
-      <CaseSection title="Research">
+      <CaseSection title="What I Actually Looked At" id="research">
         <P>
           I came in with no AV industry background and no inherited assumptions about how things should
           work. So I mapped the entire system — from the moment a potential customer first encountered SIMA
@@ -58,7 +58,7 @@ export default function Sima() {
         </P>
       </CaseSection>
 
-      <CaseSection title="Reframe">
+      <CaseSection title="Reframing the Problem" id="reframe">
         <P>
           When I brought this to leadership the reception was open. Competitors were cheaper, but that was
           never SIMA's game. Premium product, proven quality, global clients. Price wasn't the lever. The
@@ -72,7 +72,7 @@ export default function Sima() {
         </P>
       </CaseSection>
 
-      <CaseSection title="Approach">
+      <CaseSection title="What I Did" id="approach">
         <P>
           I redesigned the customer intake workflow end to end. I rebuilt the website to reflect SIMA's
           actual work — updated, intuitive, credible to a first-time visitor. I rebuilt the routing logic
@@ -85,7 +85,7 @@ export default function Sima() {
         </P>
       </CaseSection>
 
-      <CaseOutcomes title="Outcomes">
+      <CaseOutcomes title="What It Produced" id="outcomes">
         <CaseOutcomeItem>
           <strong className="text-text-primary font-semibold">80% increase</strong> in qualified inbound
           engagement
@@ -99,7 +99,7 @@ export default function Sima() {
         </CaseOutcomeItem>
       </CaseOutcomes>
 
-      <CaseSection title="Reflection">
+      <CaseSection title="What This Was Really About" id="reflection">
         <P>
           They thought the threat was outside — competitors with lower prices. The real gap was inside — a
           system that was losing interested customers before price ever became a factor.

@@ -65,9 +65,9 @@ function SideNav({ items }: { items: string[] }) {
   );
 }
 
-export function CaseSection({ title, children }: { title: string; children: ReactNode }) {
+export function CaseSection({ title, id, children }: { title: string; id?: string; children: ReactNode }) {
   return (
-    <div id={slugify(title)} className="mt-12 first:mt-0 scroll-mt-28">
+    <div id={id ?? slugify(title)} className="mt-12 first:mt-0 scroll-mt-28">
       <div className="flex items-center gap-3 mb-5">
         <div className="w-6 h-px bg-stroke" />
         <span className="text-xs text-muted uppercase tracking-[0.25em]">{title}</span>
@@ -77,9 +77,9 @@ export function CaseSection({ title, children }: { title: string; children: Reac
   );
 }
 
-export function CaseOutcomes({ title, children }: { title: string; children: ReactNode }) {
+export function CaseOutcomes({ title, id, children }: { title: string; id?: string; children: ReactNode }) {
   return (
-    <div id={slugify(title)} className="bg-surface border border-stroke rounded-2xl p-6 md:p-8 my-10 scroll-mt-28">
+    <div id={id ?? slugify(title)} className="bg-surface border border-stroke rounded-2xl p-6 md:p-8 my-10 scroll-mt-28">
       <span className="text-xs text-muted uppercase tracking-[0.2em] block mb-5">{title}</span>
       <div className="space-y-3">{children}</div>
     </div>
