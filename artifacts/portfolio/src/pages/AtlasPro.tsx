@@ -15,15 +15,15 @@ export default function AtlasPro() {
       imageAlt="AtlasPro AI — Impact vs Complexity Map"
       imageContain
       navItems={[
-        "The Brief",
-        "Where I Started",
-        "Going Deeper",
-        "Turning Signals Into Decisions",
-        "What It Produced",
-        "What This Was Really About",
+        "Brief",
+        "Start",
+        "Deeper",
+        "Decisions",
+        "Outcomes",
+        "Reflection",
       ]}
     >
-      <CaseSection title="The Brief">
+      <CaseSection title="The Brief" id="brief">
         <P>
           Most product briefs come with constraints — a problem to solve, a user to serve, a direction to
           explore. The brief I got at AtlasPro AI was different.
@@ -42,7 +42,7 @@ export default function AtlasPro() {
         </P>
       </CaseSection>
 
-      <CaseSection title="Where I Started">
+      <CaseSection title="Where I Started" id="start">
         <P>
           I had no background in location or geospatial analytics. So before I could answer what to build,
           I had to understand the landscape well enough to ask the right questions.
@@ -66,7 +66,7 @@ export default function AtlasPro() {
         </P>
       </CaseSection>
 
-      <CaseSection title="Going Deeper">
+      <CaseSection title="Going Deeper" id="deeper">
         <P>
           With the landscape understood and scope narrowed, I designed a targeted research phase to get
           closer to real user frustration — not polished feedback, not competitor marketing claims, but what
@@ -86,7 +86,7 @@ export default function AtlasPro() {
         </P>
       </CaseSection>
 
-      <CaseSection title="Turning Signals Into Decisions">
+      <CaseSection title="Turning Signals Into Decisions" id="decisions">
         <P>
           Raw clusters aren't a product strategy. I mapped every cluster onto a two-dimensional impact
           versus complexity framework and built an interactive visualization the founding team could
@@ -99,7 +99,7 @@ export default function AtlasPro() {
         </P>
       </CaseSection>
 
-      <CaseOutcomes title="What It Produced">
+      <CaseOutcomes title="What It Produced" id="outcomes">
         <CaseOutcomeItem>
           <strong className="text-text-primary font-semibold">
             10 companies across 2 market sectors
@@ -133,7 +133,7 @@ export default function AtlasPro() {
         </CaseOutcomeItem>
       </CaseOutcomes>
 
-      <CaseSection title="What This Was Really About">
+      <CaseSection title="What This Was Really About" id="reflection">
         <P>
           The brief was open-ended by design — that's the hardest kind. No playbook, no senior PM to check
           with, no predefined scope to stay inside.
