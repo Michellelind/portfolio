@@ -174,7 +174,7 @@ export default function CaseStudyLayout({ eyebrow, title, meta, image, imageAlt,
           )}
 
           {/* Content */}
-          <div className="flex-1 min-w-0 max-w-[720px]">
+          <div className="flex-1 min-w-0 max-w-[720px] pb-64">
             {children}
           </div>
         </div>
