@@ -176,6 +176,14 @@ export default function CaseStudyLayout({ eyebrow, title, meta, image, imageAlt,
           {/* Content */}
           <div className="flex-1 min-w-0 max-w-[720px] pb-64">
             {children}
+            <div className="mt-16 flex justify-center">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="text-xs text-muted uppercase tracking-[0.2em] hover:text-text-primary transition-colors"
+              >
+                ↑ Back to top
+              </button>
+            </div>
           </div>
         </div>
       </div>
