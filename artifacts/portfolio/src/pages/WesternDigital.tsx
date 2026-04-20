@@ -14,14 +14,14 @@ export default function WesternDigital() {
       image={wdProduct}
       imageAlt="Western Digital project"
       navItems={[
-        "The Moment I Noticed",
-        "What I Did About It",
-        "The Resistance I Had to Navigate",
-        "What It Produced",
-        "What This Was Really About",
+        "Noticed",
+        "Response",
+        "Resistance",
+        "Outcomes",
+        "Reflection",
       ]}
     >
-      <CaseSection title="The Moment I Noticed">
+      <CaseSection title="Noticed">
         <P>
           Test runs at Western Digital could take anywhere from 5 minutes to 12 hours. Nobody knew when
           they'd finish. So engineers did what engineers do — they context-switched, checked back repeatedly,
@@ -37,7 +37,7 @@ export default function WesternDigital() {
         </P>
       </CaseSection>
 
-      <CaseSection title="What I Did About It">
+      <CaseSection title="Response">
         <P>
           I built it for myself first. A lightweight Python notification tool that would alert me when a
           test completed — nothing more. If it didn't work for me, it wasn't worth proposing to anyone else.
@@ -54,7 +54,7 @@ export default function WesternDigital() {
         </P>
       </CaseSection>
 
-      <CaseSection title="The Resistance I Had to Navigate">
+      <CaseSection title="Resistance">
         <P>
           The team's hesitation wasn't irrational. A 2-year validation cycle creates real risk aversion —
           nobody wants to introduce instability into a process that's already running. So I didn't ask for
@@ -64,7 +64,7 @@ export default function WesternDigital() {
         </P>
       </CaseSection>
 
-      <CaseOutcomes title="What It Produced">
+      <CaseOutcomes title="Outcomes">
         <CaseOutcomeItem>
           <strong className="text-text-primary font-semibold">30% reduction</strong> in validation cycle
           time for the pilot team
@@ -84,7 +84,7 @@ export default function WesternDigital() {
         <CaseOutcomeItem>Still running after I left</CaseOutcomeItem>
       </CaseOutcomes>
 
-      <CaseSection title="What This Was Really About">
+      <CaseSection title="Reflection">
         <P>
           The tool wasn't complicated. What was complicated was seeing a problem that nobody had thought to
           name — and deciding it was worth naming.
