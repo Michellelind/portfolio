@@ -93,7 +93,7 @@ export default function HeroSection({ videoRef: externalRef }: { videoRef?: RefO
           >
             <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative bg-text-primary text-bg rounded-full px-7 py-3.5 text-sm hover:bg-bg hover:text-text-primary transition duration-300 group-hover:scale-105">
-              See Works
+              See Work
             </div>
           </button>
 
