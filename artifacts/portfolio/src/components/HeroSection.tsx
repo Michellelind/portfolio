@@ -19,7 +19,7 @@ export default function HeroSection() {
     if (!video) return;
     const url = "https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8";
     if (Hls.isSupported()) {
-      const hls = new Hls({ startPosition: -1 });
+      const hls = new Hls({ startPosition: 0, autoStartLoad: true });
       hls.loadSource(url);
       hls.attachMedia(video);
     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
