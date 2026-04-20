@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useLocation } from "wouter";
 import wdLogo from "@assets/wd_logo_1776628426397.jpeg";
 import wdProduct from "@assets/wd_product_1776628871620.png";
 import simaLogo from "@assets/sima_logo_1776628985132.png";
@@ -19,6 +20,7 @@ interface CaseCard {
   image: string;
   imageAlt: string;
   span: string;
+  href: string;
 }
 
 const cards: CaseCard[] = [
@@ -34,6 +36,7 @@ const cards: CaseCard[] = [
     image: wdProduct,
     imageAlt: "WD Black P10 Game Drive",
     span: "md:col-span-7",
+    href: "/work/western-digital",
   },
   {
     logo: simaLogo,
@@ -47,6 +50,7 @@ const cards: CaseCard[] = [
     image: simaProduct,
     imageAlt: "Sima Agustus concert",
     span: "md:col-span-5",
+    href: "/work/sima",
   },
   {
     logo: atlasproLogo,
@@ -60,6 +64,7 @@ const cards: CaseCard[] = [
     image: atlasproArtifact,
     imageAlt: "AtlasPro signal cluster map",
     span: "md:col-span-5",
+    href: "/work/atlaspro",
   },
   {
     logo: servicenowLogo,
@@ -73,14 +78,17 @@ const cards: CaseCard[] = [
     image: cornellProduct,
     imageAlt: "ServiceNow research chart",
     span: "md:col-span-7",
+    href: "/work/servicenow",
   },
 ];
 
 function CaseCard({ card }: { card: CaseCard }) {
+  const [, navigate] = useLocation();
   return (
     <div
       className={`relative group overflow-hidden bg-surface border border-stroke rounded-3xl cursor-pointer min-h-[420px] ${card.span}`}
       data-testid={`card-project-${card.company.split(" ")[0].toLowerCase()}`}
+      onClick={() => { navigate(card.href); window.scrollTo({ top: 0 }); }}
     >
       {/* Background image */}
       <img
@@ -130,13 +138,12 @@ function CaseCard({ card }: { card: CaseCard }) {
               </span>
             ))}
           </div>
-          <a
-            href="#"
+          <span
             className="inline-block text-xs md:text-sm text-white/70 hover:text-white underline-offset-4 hover:underline transition-colors"
             data-testid={`btn-cta-${card.company.split(" ")[0].toLowerCase()}`}
           >
             {card.cta}
-          </a>
+          </span>
         </div>
       </div>
     </div>
