@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Hls from "hls.js";
 import gsap from "gsap";
 import type { RefObject } from "react";
+import { trackEvent } from "@/hooks/use-page-tracking";
 
 const rolesPhrases = [
   { pre: "An ", bold: "Engineer", mid: " by ", boldEnd: "training" },
@@ -88,7 +89,7 @@ export default function HeroSection({ videoRef: externalRef }: { videoRef?: RefO
 
         <div className="blur-in flex flex-wrap items-center justify-center gap-4">
           <button
-            onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            onClick={() => { trackEvent("cta_click", { cta: "see_work" }); document.getElementById("work")?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
             className="relative group rounded-full"
           >
             <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -97,7 +98,7 @@ export default function HeroSection({ videoRef: externalRef }: { videoRef?: RefO
             </div>
           </button>
 
-          <button className="relative group rounded-full">
+          <button onClick={() => trackEvent("cta_click", { cta: "reach_out" })} className="relative group rounded-full">
             <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative border-2 border-stroke bg-bg text-text-primary rounded-full px-7 py-3.5 text-sm group-hover:border-transparent transition duration-300 group-hover:scale-105">
               Reach Out

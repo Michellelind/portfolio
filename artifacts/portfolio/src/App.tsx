@@ -8,10 +8,12 @@ import WesternDigital from "@/pages/WesternDigital";
 import Sima from "@/pages/Sima";
 import AtlasPro from "@/pages/AtlasPro";
 import ServiceNow from "@/pages/ServiceNow";
+import { usePageTracking } from "@/hooks/use-page-tracking";
 
 const queryClient = new QueryClient();
 
 function Router() {
+  usePageTracking();
   return (
     <Switch>
       <Route path="/" component={Index} />

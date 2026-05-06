@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import Hls from "hls.js";
+import { trackEvent } from "@/hooks/use-page-tracking";
 
 export default function FooterSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -55,6 +56,7 @@ export default function FooterSection() {
               rel="noopener noreferrer"
               className="relative group rounded-full"
               data-testid="btn-linkedin"
+              onClick={() => trackEvent("cta_click", { cta: "linkedin" })}
             >
               <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative bg-bg border border-stroke group-hover:border-transparent text-text-primary rounded-full px-8 py-4 text-base transition duration-300">
@@ -66,6 +68,7 @@ export default function FooterSection() {
               href="mailto:mlk268@cornell.edu"
               className="relative group rounded-full"
               data-testid="btn-get-in-touch"
+              onClick={() => trackEvent("cta_click", { cta: "get_in_touch" })}
             >
               <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative bg-text-primary text-bg rounded-full px-8 py-4 text-base group-hover:bg-bg group-hover:text-text-primary transition duration-300">

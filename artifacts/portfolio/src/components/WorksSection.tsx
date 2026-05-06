@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useLocation } from "wouter";
+import { trackEvent } from "@/hooks/use-page-tracking";
 import wdLogo from "@assets/wd_logo_1776628426397.jpeg";
 import wdProduct from "@assets/wd_product_1776628871620.png";
 import simaLogo from "@assets/sima_logo_1776628985132.png";
@@ -88,7 +89,7 @@ function CaseCard({ card }: { card: CaseCard }) {
     <div
       className={`relative group overflow-hidden bg-surface border border-stroke rounded-3xl cursor-pointer min-h-[420px] ${card.span}`}
       data-testid={`card-project-${card.company.split(" ")[0].toLowerCase()}`}
-      onClick={() => { navigate(card.href); window.scrollTo({ top: 0 }); }}
+      onClick={() => { trackEvent("case_study_click", { project: card.company.split(" ")[0].toLowerCase() }); navigate(card.href); window.scrollTo({ top: 0 }); }}
     >
       {/* Background image */}
       <img
