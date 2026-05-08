@@ -96,6 +96,14 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             style={{ width: `${count}%`, boxShadow: "0 0 8px rgba(137, 170, 204, 0.35)" }}
           />
         </div>
+        <div className="flex justify-end">
+          <button
+            onClick={onComplete}
+            className="text-xs text-muted uppercase tracking-[0.3em] hover:text-text-primary transition-colors duration-200 cursor-pointer"
+          >
+            Skip →
+          </button>
+        </div>
       </div>
     </motion.div>
   );
